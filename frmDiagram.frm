@@ -46,56 +46,8 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-' <VB WATCH>
-Const VBWMODULE = "frmDiagram"
-' </VB WATCH>
-
 Private Sub cmdClose_Click()
-' <VB WATCH>
-1          On Error GoTo vbwErrHandler
-2          Const VBWPROCNAME = "frmDiagram.cmdClose_Click"
-3          If vbwProtector.vbwTraceProc Then
-4              Dim vbwProtectorParameterString As String
-5              If vbwProtector.vbwTraceParameters Then
-6                  vbwProtectorParameterString = "()"
-7              End If
-8              vbwProtector.vbwProcIn VBWPROCNAME, vbwProtectorParameterString
-9          End If
-' </VB WATCH>
-10         Me.Hide
-' <VB WATCH>
-11         If vbwProtector.vbwTraceProc Then vbwProtector.vbwProcOut VBWPROCNAME
-12         Exit Sub
-    ' ----- Error Handler ------
-vbwErrHandler:
-    Const VBWPROCEDURE = "cmdClose_Click"
-
-    Select Case vbwErrorHandler(Err.Number, Err.Description, VBWPROJECT, VBWMODULE, VBWPROCEDURE, Erl)
-        Case vbwEnd
-            End
-        Case vbwRetry
-            Resume
-        Case vbwIgnoreLine
-            Resume Next
-        Case vbwDoDumpVariable
-            vbwOpenDumpFile
-            vbwReportToFile VBW_LOCAL_STRING
-            vbwReportModuleVariables
-            vbwReportGlobalVariables
-            vbwCloseDumpFile
-            Err.Number = -1
-            Goto vbwErrHandler
-    End Select
-    If vbwProtector.vbwTraceProc Then vbwProtector.vbwProcOut VBWPROCNAME
-' </VB WATCH>
+    Me.Hide
 End Sub
 
 
-' <VB WATCH> <VBWATCHFINALPROC>
-' Procedures added by VB Watch for variable dump
-
-
-Private Sub vbwReportModuleVariables()
-    vbwReportToFile VBW_MODULE_STRING
-End Sub
-' </VB WATCH>

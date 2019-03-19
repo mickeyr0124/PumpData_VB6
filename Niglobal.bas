@@ -29,15 +29,3 @@ Global GPIBglobalsRegistered As Integer
 Global Const EDVR As Integer = 0      ' System error
 
 
-' <VB WATCH>
-Const VBWMODULE = "NIGLOBAL"
-' </VB WATCH>
-
-' <VB WATCH> <VBWATCHFINALPROC>
-' Procedures added by VB Watch for variable dump
-
-
-Private Sub vbwReportModuleVariables()
-    vbwReportToFile VBW_MODULE_STRING
-End Sub
-' </VB WATCH>

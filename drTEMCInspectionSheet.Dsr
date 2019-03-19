@@ -1,15 +1,15 @@
 VERSION 5.00
 Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drTEMCInspectionSheet 
    Caption         =   "DataReport1"
-   ClientHeight    =   12810
-   ClientLeft      =   60
-   ClientTop       =   345
+   ClientHeight    =   11760
+   ClientLeft      =   225
+   ClientTop       =   570
    ClientWidth     =   11880
    StartUpPosition =   3  'Windows Default
    _ExtentX        =   20955
    _ExtentY        =   22595
    _Version        =   393216
-   _DesignerVersion=   100685828
+   _DesignerVersion=   100688210
    ReportWidth     =   11160
    BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
       Name            =   "Arial"
@@ -3347,15 +3347,3 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
-' <VB WATCH>
-Const VBWMODULE = "drTEMCInspectionSheet"
-' </VB WATCH>
-
-' <VB WATCH> <VBWATCHFINALPROC>
-' Procedures added by VB Watch for variable dump
-
-
-Private Sub vbwReportModuleVariables()
-    vbwReportToFile VBW_MODULE_STRING
-End Sub
-' </VB WATCH>
