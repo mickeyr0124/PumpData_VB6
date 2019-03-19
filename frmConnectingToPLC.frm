@@ -39,15 +39,3 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 
-' <VB WATCH>
-Const VBWMODULE = "frmConnectingToPLC"
-' </VB WATCH>
-
-' <VB WATCH> <VBWATCHFINALPROC>
-' Procedures added by VB Watch for variable dump
-
-
-Private Sub vbwReportModuleVariables()
-    vbwReportToFile VBW_MODULE_STRING
-End Sub
-' </VB WATCH>
