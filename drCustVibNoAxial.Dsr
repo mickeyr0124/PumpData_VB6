@@ -9,7 +9,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drCustVibNoAxial
    _ExtentX        =   26882
    _ExtentY        =   19606
    _Version        =   393216
-   _DesignerVersion=   100684101
+   _DesignerVersion=   100688210
    ReportWidth     =   15360
    BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
       Name            =   "Arial"
@@ -2485,15 +2485,3 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
-' <VB WATCH>
-Const VBWMODULE = "drCustVibNoAxial"
-' </VB WATCH>
-
-' <VB WATCH> <VBWATCHFINALPROC>
-' Procedures added by VB Watch for variable dump
-
-
-Private Sub vbwReportModuleVariables()
-    vbwReportToFile VBW_MODULE_STRING
-End Sub
-' </VB WATCH>

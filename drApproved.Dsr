@@ -10,7 +10,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drApproved
    _ExtentX        =   19235
    _ExtentY        =   8890
    _Version        =   393216
-   _DesignerVersion=   100685828
+   _DesignerVersion=   100688210
    ReportWidth     =   9360
    BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
       Name            =   "Arial"
@@ -249,15 +249,3 @@ Attribute VB_Exposed = False
 Option Explicit
 
 
-' <VB WATCH>
-Const VBWMODULE = "drApproved"
-' </VB WATCH>
-
-' <VB WATCH> <VBWATCHFINALPROC>
-' Procedures added by VB Watch for variable dump
-
-
-Private Sub vbwReportModuleVariables()
-    vbwReportToFile VBW_MODULE_STRING
-End Sub
-' </VB WATCH>
