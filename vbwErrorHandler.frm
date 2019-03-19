@@ -173,128 +173,115 @@ Private Const SW_SHOWNORMAL = 1
 ' vbwNoTraceProc vbwNoTraceLine ' don't remove this !
 ' vbwNoErrorHandler ' don't remove this !
 
-' <VB WATCH>
-Const VBWMODULE = "vbwFrmErrHandler"
-' </VB WATCH>
-
 Private Sub cmdAction_Click(Index As Integer)
 
-           ' Index can be 3 (vbAbort), 4 (vbRetry), 5 (vbIgnore) or 6 for Ignore Procedure
+    ' Index can be 3 (vbAbort), 4 (vbRetry), 5 (vbIgnore) or 6 for Ignore Procedure
 
-1          vbwErrHandler.vbwRetCode = Index              ' Returns an action
-2          Unload Me                                     ' and quits
-
+    vbwErrHandler.vbwRetCode = Index              ' Returns an action
+    Unload Me                                     ' and quits
+  
 End Sub
 
 Private Sub cmdSendMail_Click()
-3          SetWindowPos Me.hwnd, -&H2, 0&, 0&, 0&, 0&, (&H1 Or &H2) ' lose the topmost status
+    SetWindowPos Me.hwnd, -&H2, 0&, 0&, 0&, 0&, (&H1 Or &H2) ' lose the topmost status
 
 
-4          vbwRetCode = vbwDoDumpVariable
-5          vbwCircumstancesString = txtDescribe.Text
+    vbwRetCode = vbwDoDumpVariable
+    vbwCircumstancesString = txtDescribe.Text
 
-6          MessageBox 0&, "This application will now retrieve some data needed to fix this error, open your email messenger and prepare a message to send. Then please press the ""Send Message"" button." _
+    MessageBox 0&, "This application will now retrieve some data needed to fix this error, open your email messenger and prepare a message to send. Then please press the ""Send Message"" button." _
                    & vbCrLf & "This may take from a few seconds up to a few minutes depending on the amount of data to retrieve." _
                    & vbCrLf & "During this time, you should normally notice hard drive and floppy drive activity." _
                    , App.title, vbInformation + vbMsgBoxSetTopMost
-7          Unload Me
-           ' This is not finished !
-           ' We just return to the failing procedure to dump its variables
-           ' then end the email process in Public Function vbwErrorHandler()
+    Unload Me
+    ' This is not finished !
+    ' We just return to the failing procedure to dump its variables
+    ' then end the email process in Public Function vbwErrorHandler()
 End Sub
 
 Private Sub Form_Load()
 
-8          Caption = App.title
-9          lblErrorString = vbwMessageString                ' vbwMessageString is already initialized  with the error message
+    Caption = App.title
+    lblErrorString = vbwMessageString                ' vbwMessageString is already initialized  with the error message
 
-10         If vbwfHasReported Then
-11             lblReport = "Thanks for having reported this error !" & vbCrLf
-12             lblReport = lblReport & "Please select a continuation below..."
-13             txtDescribe = ""
-14             cmdSendMail.Enabled = False
-15         Else
-16             lblReport = "We are very sorry for this inconvenience and we would like to provide a fix for this error. "
-17             lblReport = lblReport & "You may help us a great deal by reporting this error via email. "
-18             lblReport = lblReport & "If you allow this, please fill the text box below and press the Report Error button. "
-19             lblReport = lblReport & "Thanks for your time."
-20             txtDescribe = "< Please describe here what you were doing exactly when this error occurred >" & vbCrLf
-21         End If
+    If vbwfHasReported Then
+        lblReport = "Thanks for having reported this error !" & vbCrLf
+        lblReport = lblReport & "Please select a continuation below..."
+        txtDescribe = ""
+        cmdSendMail.Enabled = False
+    Else
+        lblReport = "We are very sorry for this inconvenience and we would like to provide a fix for this error. "
+        lblReport = lblReport & "You may help us a great deal by reporting this error via email. "
+        lblReport = lblReport & "If you allow this, please fill the text box below and press the Report Error button. "
+        lblReport = lblReport & "Thanks for your time."
+        txtDescribe = "< Please describe here what you were doing exactly when this error occurred >" & vbCrLf
+    End If
 
-           ' Do some formating:
-           ' Adjust form width to lblErrorString or picButtons
-22         Width = lblErrorString.Left + lblErrorString.Width + 260
-23         If Width < picButtons.Width Then
-24             Width = picButtons.Width
-25         End If
-           ' picButtons is centered horizontally and moved below lblErrorString
-26         picButtons.Move (Width - picButtons.Width) / 2, lblErrorString.Top + lblErrorString.Height
-           ' Adjust form height to the bottom of picButtons
-27         Height = picButtons.Top + picButtons.Height
-           ' Center form
-28         Move (Screen.Width - Width) / 2, (Screen.Height - Height) / 2
-29         DisableCloseButton ' disable close button to force the user to make a choice
-30         Beep
+    ' Do some formating:
+    ' Adjust form width to lblErrorString or picButtons
+    Width = lblErrorString.Left + lblErrorString.Width + 260
+    If Width < picButtons.Width Then
+        Width = picButtons.Width
+    End If
+    ' picButtons is centered horizontally and moved below lblErrorString
+    picButtons.Move (Width - picButtons.Width) / 2, lblErrorString.Top + lblErrorString.Height
+    ' Adjust form height to the bottom of picButtons
+    Height = picButtons.Top + picButtons.Height
+    ' Center form
+    Move (Screen.Width - Width) / 2, (Screen.Height - Height) / 2
+    DisableCloseButton ' disable close button to force the user to make a choice
+    Beep
 
-           ' Set form topmost or the user might not see it if an other form is already topmost (such as a splash screen)
-31         If Not vbwfHasReported Then
-32              SetWindowPos Me.hwnd, -&H1, 0&, 0&, 0&, 0&, (&H1 Or &H2)
-33         End If
+    ' Set form topmost or the user might not see it if an other form is already topmost (such as a splash screen)
+    If Not vbwfHasReported Then
+         SetWindowPos Me.hwnd, -&H1, 0&, 0&, 0&, 0&, (&H1 Or &H2)
+    End If
 End Sub
 
 
 Private Sub Form_Unload(Cancel As Integer)
-34         If vbwRetCode = 0 Then ' Default to Retry
-35              vbwRetCode = vbwRetry
-36         End If
+    If vbwRetCode = 0 Then ' Default to Retry
+         vbwRetCode = vbwRetry
+    End If
 End Sub
 
 Private Sub txtDescribe_GotFocus()
 
-           ' temporarily disable the cmdSendMail Default status to allow the "Enter" key
-37         cmdSendMail.Default = False
+    ' temporarily disable the cmdSendMail Default status to allow the "Enter" key
+    cmdSendMail.Default = False
 
-           ' automatically select the existing text
-38         txtDescribe.SelStart = 0
-39         txtDescribe.SelLength = 65000
-
+    ' automatically select the existing text
+    txtDescribe.SelStart = 0
+    txtDescribe.SelLength = 65000
+  
 End Sub
 
 Private Sub txtDescribe_LostFocus()
 
-40         cmdSendMail.Default = True
-
+    cmdSendMail.Default = True
+  
 End Sub
 
 Private Sub DisableCloseButton()
-41          Dim hMenu As Long
-42          Dim nCount As Long
-43          hMenu = GetSystemMenu(Me.hwnd, 0)
-44          nCount = GetMenuItemCount(hMenu)
+     Dim hMenu As Long
+     Dim nCount As Long
+     hMenu = GetSystemMenu(Me.hwnd, 0)
+     nCount = GetMenuItemCount(hMenu)
 
-45          Call RemoveMenu(hMenu, nCount - 1, MF_BYPOSITION)
-46          Call RemoveMenu(hMenu, nCount - 2, MF_BYPOSITION)
+     Call RemoveMenu(hMenu, nCount - 1, MF_BYPOSITION)
+     Call RemoveMenu(hMenu, nCount - 2, MF_BYPOSITION)
 
-47          DrawMenuBar Me.hwnd
+     DrawMenuBar Me.hwnd
 End Sub
 
 Public Property Let Report(ByVal sNewValue As String)
-48         sReport = sNewValue
-49         cmdLook.Visible = True
+    sReport = sNewValue
+    cmdLook.Visible = True
 End Property
 
 Private Sub cmdLook_Click()
-50         ShellExecute hwnd, "open", sReport, "", "", SW_SHOWNORMAL
+    ShellExecute hwnd, "open", sReport, "", "", SW_SHOWNORMAL
 End Sub
 
 
 
-' <VB WATCH> <VBWATCHFINALPROC>
-' Procedures added by VB Watch for variable dump
-
-
-Private Sub vbwReportModuleVariables()
-    vbwReportToFile VBW_MODULE_STRING
-    vbwReportVariable "sReport", sReport
-End Sub
-' </VB WATCH>

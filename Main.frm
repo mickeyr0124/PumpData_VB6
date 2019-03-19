@@ -7185,6 +7185,11 @@ Attribute VB_Exposed = False
 'v1.3.2 - MHR - 5/7/18
 '   changed Force and VOverA calculations
 
+'v1.3.3 - MHR - 5/8/18
+'   Modified TEMCCalcForce to be multiplied by SpGr
+'   Added A15852-8 to Test Specification dropdown and made it default
+
+
     Option Explicit
 
     Dim debugging As Integer        'debugging 1=true 0=false
@@ -8277,6 +8282,8 @@ Private Sub cmdAddNewTestDate_Click()
 
     'we didn't find today's date entered, allow data entry
     boFoundTestSetup = False
+
+    SetSpecCombo
 
     EnableTestSetupDataControls
     cmdEnterTestSetupData_Click
@@ -10204,13 +10211,13 @@ Sub CalculateTEMCForce()
             txtTEMCCalcForce.Text = " "
         Else
             'rear thrust
-            txtTEMCCalcForce.Text = Val(txtTEMCRearThrust.Text) * Val(txtTEMCMomentArm.Text) - (Val(txtTEMCThrustRigPressure.Text) / 14.223) * 4.5
+            txtTEMCCalcForce.Text = (Val(txtTEMCRearThrust.Text) * Val(txtTEMCMomentArm.Text) - (Val(txtTEMCThrustRigPressure.Text) / 14.223) * 4.5) * Val(Me.txtSpGr.Text)
             lblTEMCFrontRear.Caption = "REAR"
             lblTEMCFrontRear.Visible = True
         End If
     Else
         'front thrust
-        txtTEMCCalcForce.Text = Val(txtTEMCFrontThrust.Text) * Val(txtTEMCMomentArm.Text) + (Val(txtTEMCThrustRigPressure.Text) / 14.223) * 4.5
+        txtTEMCCalcForce.Text = (Val(txtTEMCFrontThrust.Text) * Val(txtTEMCMomentArm.Text) + (Val(txtTEMCThrustRigPressure.Text) / 14.223) * 4.5) * Val(Me.txtSpGr.Text)
         lblTEMCFrontRear.Caption = "FRONT"
         lblTEMCFrontRear.Visible = True
     End If
@@ -10803,6 +10810,7 @@ On Error GoTo 0
     LoadCombo cmbRPM, "RPM"
     LoadCombo cmbOrificeNumber, "OrificeNumber"
     LoadCombo cmbTestSpec, "TestSpecification"
+    SetSpecCombo
     LoadCombo cmbLoopNumber, "LoopNumber"
     LoadCombo cmbSuctDia, "SuctionDiameter"
     LoadCombo cmbDischDia, "DischargeDiameter"
@@ -12214,7 +12222,10 @@ Private Sub BlankData()
     txtPicturesFile.Text = vbNullString
     txtVibrationFile.Text = vbNullString
 '    cmbOrificeNumber.ListIndex = 18
-'    cmbTestSpec.ListIndex = 6       'default = Rev7
+
+    SetSpecCombo
+
+'    cmbTestSpec.ListIndex = 8       'default = Rev7
     cmbLoopNumber.ListIndex = -1
     cmbSuctDia.ListIndex = -1
     cmbDischDia.ListIndex = -1
@@ -16837,5 +16848,15 @@ On Error GoTo 0
   
 End Sub
 
-
+Sub SetSpecCombo()
+    'set default for test spec
+    Dim j As Integer
+    For j = 0 To cmbTestSpec.ListCount - 1
+        If cmbTestSpec.List(j) = "A15852-8" Then
+            cmbTestSpec.ListIndex = j
+            Exit For
+        End If
+    Next
+  
+End Sub
 

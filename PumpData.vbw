@@ -1,8 +1,10 @@
-frmPLCData = 78, 78, 1046, 533, , 100, 100, 1243, 631, C
+vbwFrmErrHandler = 52, 52, 1020, 507, C, 225, 225, 1368, 756, C
+frmPLCData = 78, 78, 1046, 533, C, 100, 100, 1243, 631, C
+VBIB32 = 104, 104, 1072, 559, C
 FrmSODetails = 130, 130, 1098, 585, C, 0, 0, 1143, 531, C
 HPRoutines = 156, 156, 1124, 611, C
 AccessRoutines = 182, 182, 1150, 637, C
-PLCInterface = -5, 42, 1138, 573, 
+PLCInterface = 175, 175, 1318, 706, 
 frmConnectingToPLC = 208, 208, 1176, 663, C, 25, 25, 1168, 556, C
 DataEnvironment1 = 0, 0, 968, 455, C, 25, 25, 798, 519, C
 drChart = 26, 26, 994, 481, C, 125, 125, 1157, 905, C
