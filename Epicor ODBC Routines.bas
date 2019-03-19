@@ -198,7 +198,7 @@ Public Function GetEpicorODBCData(SerialNumber As String, EpicorConnectionString
     SQLString = SQLString & " UD03.Number07         AS PumpTemperature,"
     SQLString = SQLString & " UD03.Number11         AS Viscosity,"
     SQLString = SQLString & " UD03.Number13         AS VaporPressure,"
-    SQLString = SQLString & " UD03.Number07         As LiquidTemp"
+    SQLString = SQLString & " UD03.Number07         As LiquidTemp,"
     SQLString = SQLString & " UD03.Number15         As SpecificHeat"
     SQLString = SQLString & " FROM ice.UD03"
     SQLString = SQLString & " WHERE UD03.Key1 = '" & MyRecord.SONumber & "' "
