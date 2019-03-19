@@ -7181,6 +7181,10 @@ Attribute VB_Exposed = False
 '   look for right 3 digits of temc frame number in calculated rpm if normal lookup fails
 '   find number of points to plot
 '   added SpecificHeat to Epicor retrieval and export to excel
+
+'v1.3.2 - MHR - 5/7/18
+'   changed Force and VOverA calculations
+
     Option Explicit
 
     Dim debugging As Integer        'debugging 1=true 0=false
@@ -10221,16 +10225,31 @@ Sub CalculateTEMCForce()
         NoOfPoles = 2 * Val(Left$(Right$(txtTEMCFrameNumber.Text, 2), 1))
     End If
 
-    If cmbTEMCAdditions.ListIndex <> -1 Then
-        Additions = Mid$(cmbTEMCAdditions.List(cmbTEMCAdditions.ListIndex), 2, 1)
-        If Additions = "A" Or Additions = "E" Or Additions = "G" Or Additions = "J" Then
-            Frequency = 60
-        ElseIf Additions = "B" Or Additions = "F" Or Additions = "H" Or Additions = "K" Then
+    Select Case Me.cmbFrequency.List(Me.cmbFrequency.ListIndex)
+        Case "50 Hz"
             Frequency = 50
-        Else
+
+        Case "60 Hz"
+            Frequency = 60
+
+        Case "VFD"
+            Frequency = Val(Me.txtVFDFreq.Text)
+
+        Case Else
             Frequency = 0
-        End If
-    End If
+
+    End Select
+
+'    If cmbTEMCAdditions.ListIndex <> -1 Then
+'        Additions = Mid$(cmbTEMCAdditions.List(cmbTEMCAdditions.ListIndex), 2, 1)
+'        If Additions = "A" Or Additions = "E" Or Additions = "G" Or Additions = "J" Then
+'            Frequency = 60
+'        ElseIf Additions = "B" Or Additions = "F" Or Additions = "H" Or Additions = "K" Then
+'            Frequency = 50
+'        Else
+'            Frequency = 0
+'        End If
+'    End If
 
     If Len(txtTEMCFrameNumber.Text) = 3 Then
         Frame = Left$(txtTEMCFrameNumber, 2) & "0"
@@ -10241,10 +10260,12 @@ Sub CalculateTEMCForce()
         Else
         End If
     End If
-    Force = DLookupA(3, TEMCForceViscosity, 1, Frame)
-    If Frequency = 60 Then
-        Force = Force / 1.2
-    End If
+
+    Force = DLookupA(3, TEMCForceViscosity, 1, Frame) * Frequency / 50
+
+'    If Frequency = 60 Then
+'        Force = Force / 1.2
+'    End If
     If Val(txtTEMCViscosity.Text) > 1# Then
         If (Val(txtTEMCCalcForce.Text) > 3 * Force) Then
             lblTEMCPassFail.Visible = True
@@ -10293,11 +10314,11 @@ Sub CalculateTEMCForce()
         End If
     End If
     If NoOfPoles <> 0 Then
-        VOverA = (DLookupA(2, TEMCForceViscosity, 1, Frame)) / (NoOfPoles / 2)
+        VOverA = (DLookupA(2, TEMCForceViscosity, 1, Frame)) * Frequency / (50 * NoOfPoles / 2)
     End If
-    If Frequency = 60 Then
-        VOverA = VOverA * 1.2
-    End If
+'    If Frequency = 60 Then
+'        VOverA = VOverA * 1.2
+'    End If
 
     txtTEMCPVValue.Text = Val(txtTEMCCalcForce.Text) * VOverA
 
