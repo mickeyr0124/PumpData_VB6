@@ -1,0 +1,53 @@
+VERSION 5.00
+Begin VB.Form frmConnectingToPLC 
+   BorderStyle     =   3  'Fixed Dialog
+   Caption         =   "Status Information"
+   ClientHeight    =   780
+   ClientLeft      =   45
+   ClientTop       =   330
+   ClientWidth     =   3690
+   LinkTopic       =   "Form1"
+   MaxButton       =   0   'False
+   MinButton       =   0   'False
+   ScaleHeight     =   780
+   ScaleWidth      =   3690
+   ShowInTaskbar   =   0   'False
+   StartUpPosition =   2  'CenterScreen
+   Begin VB.Label lblConnectingToHP 
+      Caption         =   "Connecting to HP..."
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   13.5
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H000000FF&
+      Height          =   495
+      Left            =   360
+      TabIndex        =   0
+      Top             =   120
+      Width           =   2895
+   End
+End
+Attribute VB_Name = "frmConnectingToPLC"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+
+
+' <VB WATCH>
+Const VBWMODULE = "frmConnectingToPLC"
+' </VB WATCH>
+
+' <VB WATCH> <VBWATCHFINALPROC>
+' Procedures added by VB Watch for variable dump
+
+
+Private Sub vbwReportModuleVariables()
+    vbwReportToFile VBW_MODULE_STRING
+End Sub
+' </VB WATCH>
