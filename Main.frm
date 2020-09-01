@@ -3,16 +3,16 @@ Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{65E121D4-0C60-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCHRT20.OCX"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmPLCData 
    Caption         =   "v"
-   ClientHeight    =   11760
+   ClientHeight    =   10335
    ClientLeft      =   4110
    ClientTop       =   1650
    ClientWidth     =   15375
    LinkTopic       =   "Form1"
-   ScaleHeight     =   11760
+   ScaleHeight     =   10335
    ScaleWidth      =   15375
    WindowState     =   2  'Maximized
    Begin VB.CommandButton cmdSearchForPump 
@@ -217,70 +217,70 @@ Begin VB.Form frmPLCData
       TabCaption(1)   =   "Test Setup"
       TabPicture(1)   =   "Main.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "txtRMA"
-      Tab(1).Control(1)=   "Command1"
-      Tab(1).Control(2)=   "frmTAndI"
-      Tab(1).Control(3)=   "cmdApproveTestDate"
-      Tab(1).Control(4)=   "cmdDeleteTestDate"
-      Tab(1).Control(5)=   "CommonDialog1"
-      Tab(1).Control(6)=   "frmOtherFiles"
-      Tab(1).Control(7)=   "frmPerfMods"
-      Tab(1).Control(8)=   "frmThrustBalMods"
-      Tab(1).Control(9)=   "frmElecData"
+      Tab(1).Control(0)=   "lbltab2(0)"
+      Tab(1).Control(1)=   "lbltab2(1)"
+      Tab(1).Control(2)=   "lbltab2(65)"
+      Tab(1).Control(3)=   "lbltab2(88)"
+      Tab(1).Control(4)=   "cmbTestSpec"
+      Tab(1).Control(5)=   "cmdEnterTestSetupData"
+      Tab(1).Control(6)=   "txtWho"
+      Tab(1).Control(7)=   "cmdAddNewTestDate"
+      Tab(1).Control(8)=   "txtTestSetupRemarks"
+      Tab(1).Control(9)=   "frmInstrumentTags"
       Tab(1).Control(10)=   "frmLoopAndXducer"
-      Tab(1).Control(11)=   "frmInstrumentTags"
-      Tab(1).Control(12)=   "txtTestSetupRemarks"
-      Tab(1).Control(13)=   "cmdAddNewTestDate"
-      Tab(1).Control(14)=   "txtWho"
-      Tab(1).Control(15)=   "cmdEnterTestSetupData"
-      Tab(1).Control(16)=   "cmbTestSpec"
-      Tab(1).Control(17)=   "lbltab2(88)"
-      Tab(1).Control(18)=   "lbltab2(65)"
-      Tab(1).Control(19)=   "lbltab2(1)"
-      Tab(1).Control(20)=   "lbltab2(0)"
+      Tab(1).Control(11)=   "frmElecData"
+      Tab(1).Control(12)=   "frmThrustBalMods"
+      Tab(1).Control(13)=   "frmPerfMods"
+      Tab(1).Control(14)=   "frmOtherFiles"
+      Tab(1).Control(15)=   "CommonDialog1"
+      Tab(1).Control(16)=   "cmdDeleteTestDate"
+      Tab(1).Control(17)=   "cmdApproveTestDate"
+      Tab(1).Control(18)=   "frmTAndI"
+      Tab(1).Control(19)=   "Command1"
+      Tab(1).Control(20)=   "txtRMA"
       Tab(1).ControlCount=   21
       TabCaption(2)   =   "Test Data"
       TabPicture(2)   =   "Main.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "MSChart2"
-      Tab(2).Control(1)=   "frmReport"
-      Tab(2).Control(2)=   "MSChart1"
-      Tab(2).Control(3)=   "txtUpDn2"
-      Tab(2).Control(4)=   "txtUpDn1"
-      Tab(2).Control(5)=   "UpDown2"
-      Tab(2).Control(6)=   "UpDown1"
-      Tab(2).Control(7)=   "frmMagtrol"
-      Tab(2).Control(8)=   "frmPLCMisc"
-      Tab(2).Control(9)=   "Command2"
-      Tab(2).Control(10)=   "txtTDH"
-      Tab(2).Control(11)=   "cmdReport"
-      Tab(2).Control(12)=   "txtNPSHa"
-      Tab(2).Control(13)=   "frmPumpData"
-      Tab(2).Control(14)=   "DataGrid2"
+      Tab(2).Control(0)=   "lbltab2(55)"
+      Tab(2).Control(1)=   "lbltab2(58)"
+      Tab(2).Control(2)=   "lbltab2(59)"
+      Tab(2).Control(3)=   "Line1"
+      Tab(2).Control(4)=   "Line2"
+      Tab(2).Control(5)=   "lbltab2(63)"
+      Tab(2).Control(6)=   "lbltab2(64)"
+      Tab(2).Control(7)=   "lbltab2(53)"
+      Tab(2).Control(8)=   "lbltab2(54)"
+      Tab(2).Control(9)=   "shpGetPLCData"
+      Tab(2).Control(10)=   "DataGrid1"
+      Tab(2).Control(11)=   "cmbPLCLoop"
+      Tab(2).Control(12)=   "frmAI"
+      Tab(2).Control(13)=   "frmThermocouples"
+      Tab(2).Control(14)=   "fmrMiscTestData"
       Tab(2).Control(15)=   "cmdEnterTestData"
-      Tab(2).Control(16)=   "fmrMiscTestData"
-      Tab(2).Control(17)=   "frmThermocouples"
-      Tab(2).Control(18)=   "frmAI"
-      Tab(2).Control(19)=   "cmbPLCLoop"
-      Tab(2).Control(20)=   "DataGrid1"
-      Tab(2).Control(21)=   "shpGetPLCData"
-      Tab(2).Control(22)=   "lbltab2(54)"
-      Tab(2).Control(23)=   "lbltab2(53)"
-      Tab(2).Control(24)=   "lbltab2(64)"
-      Tab(2).Control(25)=   "lbltab2(63)"
-      Tab(2).Control(26)=   "Line2"
-      Tab(2).Control(27)=   "Line1"
-      Tab(2).Control(28)=   "lbltab2(59)"
-      Tab(2).Control(29)=   "lbltab2(58)"
-      Tab(2).Control(30)=   "lbltab2(55)"
+      Tab(2).Control(16)=   "DataGrid2"
+      Tab(2).Control(17)=   "frmPumpData"
+      Tab(2).Control(18)=   "txtNPSHa"
+      Tab(2).Control(19)=   "cmdReport"
+      Tab(2).Control(20)=   "txtTDH"
+      Tab(2).Control(21)=   "Command2"
+      Tab(2).Control(22)=   "frmPLCMisc"
+      Tab(2).Control(23)=   "frmMagtrol"
+      Tab(2).Control(24)=   "UpDown1"
+      Tab(2).Control(25)=   "UpDown2"
+      Tab(2).Control(26)=   "txtUpDn1"
+      Tab(2).Control(27)=   "txtUpDn2"
+      Tab(2).Control(28)=   "MSChart1"
+      Tab(2).Control(29)=   "frmReport"
+      Tab(2).Control(30)=   "MSChart2"
       Tab(2).ControlCount=   31
       TabCaption(3)   =   "Charts"
       TabPicture(3)   =   "Main.frx":0054
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "MSChart6"
-      Tab(3).Control(1)=   "MSChart5"
-      Tab(3).Control(2)=   "MSChart4"
-      Tab(3).Control(3)=   "MSChart3"
+      Tab(3).Control(0)=   "MSChart3"
+      Tab(3).Control(1)=   "MSChart4"
+      Tab(3).Control(2)=   "MSChart5"
+      Tab(3).Control(3)=   "MSChart6"
       Tab(3).ControlCount=   4
       Begin VB.Frame frmTEMC 
          Caption         =   "TEMC Pump Data"
@@ -7192,6 +7192,10 @@ Attribute VB_Exposed = False
 'v1.3.4 - MHR - 5/29/18
 '   Added comma after LiquidTemp in UD03 in GetEpicorODBCData - forgot to add when i added Specific heat
 
+'v1.3.5 - MHR - 6/6/18
+'   Changed Impeller Diameter output to Excel to number instead of text
+'   Removed Current from plotting twice in Excek
+'   Added sort on SearchForm to Search by portion of model
 
 
     Option Explicit
@@ -13509,12 +13513,12 @@ On Error GoTo 0
 '
         If chkTrimmed.value = 1 Then
             If Val(txtImpTrim.Text) <> 0 Then
-                .ActiveCell.FormulaR1C1 = txtImpTrim
+                .ActiveCell.FormulaR1C1 = Val(txtImpTrim.Text)
             Else
-                .ActiveCell.FormulaR1C1 = txtImpellerDia
+                .ActiveCell.FormulaR1C1 = Val(txtImpellerDia.Text)
             End If
         Else
-            .ActiveCell.FormulaR1C1 = txtImpellerDia
+            .ActiveCell.FormulaR1C1 = Val(txtImpellerDia.Text)
         End If
 
 
@@ -14289,9 +14293,11 @@ On Error GoTo 0
          Dim ShtName As String
          ShtName = "'" & ActiveSheet.Name & "'"
 
+        Dim skipSeries As Boolean
         RowStr = 56 + 15
          For I = 1 To 8
 
+            skipSeries = False
              Select Case I
                  Case 1
                      SeriesName = "=""TDH"""
@@ -14321,6 +14327,7 @@ On Error GoTo 0
                      LineColor = vbGreen
 
                  Case 4
+                    skipSeries = False
 '                     SeriesName = "=""Overall Eff"""
 '                     XVals = "=" & ShtName & "!$AP$56:$AP$" & RowStr
 '                     YVals = "=" & ShtName & "!$AT$56:$AT$" & RowStr
@@ -14357,6 +14364,7 @@ On Error GoTo 0
                      LineColor = vbGreen
 
                  Case 8
+                    skipSeries = False
 '                     SeriesName = "=""Overall Eff (Adj)"""
 '                     XVals = "=" & ShtName & "!$AW$56:$AW$" & RowStr
 '                     YVals = "=" & ShtName & "!$BA$56:$BA$" & RowStr
@@ -14366,34 +14374,37 @@ On Error GoTo 0
 '                     LineColor = vbCyan
 
             End Select
-            LastPoint = 16
-            ActiveChart.SeriesCollection.NewSeries
-            ActiveChart.SeriesCollection(I).Name = SeriesName
-            ActiveChart.SeriesCollection(I).XValues = XVals
-            ActiveChart.SeriesCollection(I).Values = YVals
-            ActiveChart.SeriesCollection(I).Select
-            ActiveChart.SeriesCollection(I).Points(LastPoint).Select
-            ActiveChart.SeriesCollection(I).Points(LastPoint).ApplyDataLabels
-            ActiveChart.SeriesCollection(I).Points(LastPoint).DataLabel.Select
-            If I < 5 Then
-                Selection.ShowSeriesName = True
-                Selection.Position = LabelPos
-            Else
-                Selection.ShowSeriesName = False
-            End If
-            Selection.ShowValue = False
-            ActiveChart.SeriesCollection(I).ChartType = xlXYScatterSmoothNoMarkers
-            ActiveChart.SeriesCollection(I).Select
-            With Selection.Format.line
-                .Visible = msoTrue
-                .DashStyle = LineType
-                .ForeColor.RGB = LineColor
-            End With
-
-
-            ActiveChart.SeriesCollection(I).AxisGroup = AxisGroup
-            ActiveChart.SeriesCollection(I).DataLabels.Font.Size = 8
-            ActiveChart.SeriesCollection(I).DataLabels.Font.Name = "Arial"
+            
+            If Not skipSeries Then
+                LastPoint = 16
+                ActiveChart.SeriesCollection.NewSeries
+                ActiveChart.SeriesCollection(I).Name = SeriesName
+                ActiveChart.SeriesCollection(I).XValues = XVals
+                ActiveChart.SeriesCollection(I).Values = YVals
+                ActiveChart.SeriesCollection(I).Select
+                ActiveChart.SeriesCollection(I).Points(LastPoint).Select
+                ActiveChart.SeriesCollection(I).Points(LastPoint).ApplyDataLabels
+                ActiveChart.SeriesCollection(I).Points(LastPoint).DataLabel.Select
+                If I < 5 Then
+                    Selection.ShowSeriesName = True
+                    Selection.Position = LabelPos
+                Else
+                    Selection.ShowSeriesName = False
+                End If
+                Selection.ShowValue = False
+                ActiveChart.SeriesCollection(I).ChartType = xlXYScatterSmoothNoMarkers
+                ActiveChart.SeriesCollection(I).Select
+                With Selection.Format.line
+                    .Visible = msoTrue
+                    .DashStyle = LineType
+                    .ForeColor.RGB = LineColor
+                End With
+    
+    
+                ActiveChart.SeriesCollection(I).AxisGroup = AxisGroup
+                ActiveChart.SeriesCollection(I).DataLabels.Font.Size = 8
+                ActiveChart.SeriesCollection(I).DataLabels.Font.Name = "Arial"
+            End If  'not skip series
         Next I
 
         'show design point
